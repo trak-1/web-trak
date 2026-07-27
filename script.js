@@ -104,7 +104,12 @@
       s.heroSlides.forEach((url, i) => { if (slides[i] && url) slides[i].style.backgroundImage = `url('${url}')`; });
     }
     if (s.heroVideo) mountHeroVideo(s.heroVideo);
+    if (Array.isArray(data.stats) && data.stats.length) renderStats(data.stats);
+    if (Array.isArray(data.services) && data.services.length) renderServices(data.services);
+    if (Array.isArray(data.works) && data.works.length) renderWorks(data.works);
+    if (Array.isArray(data.testimonials) && data.testimonials.length) renderTestimonials(data.testimonials);
     applyLang(LANG);   // re-apply so the active language reflects fresh data
+    setTimeout(() => window.dispatchEvent(new Event('scroll')), 60); // reveal + count the new nodes
   }
 
   // Mount an admin-uploaded hero video over the image slides. If it errors, it
@@ -123,6 +128,57 @@
     media.insertBefore(v, media.querySelector('.hero-grain') || null);
     if (!reduce) v.play?.().catch(() => {});
   }
+
+  /* ---------- render list sections from CMS content ---------- */
+  function esc(s) { return String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c])); }
+  const idx2 = (i) => String(i + 1).padStart(2, '0');
+
+  function renderStats(arr) {
+    const box = document.querySelector('.stats');
+    if (!box) return;
+    box.innerHTML = arr.map((s, i) => `
+      <div class="stat" data-count="${esc(s.number)}" data-suffix="${esc(s.suffix || '')}">
+        <span class="stat-num">0</span>
+        <span class="stat-label"><span class="tc">${idx2(i)}</span> <span data-en="${esc(s.label?.en)}">${esc(s.label?.ar)}</span></span>
+      </div>`).join('');
+  }
+  function renderServices(arr) {
+    const box = document.querySelector('.svc-list');
+    if (!box) return;
+    box.innerHTML = arr.map((s, i) => {
+      const ar = Array.isArray(s.tags?.ar) ? s.tags.ar : [];
+      const en = Array.isArray(s.tags?.en) ? s.tags.en : [];
+      const tags = ar.map((t, j) => `<li data-en="${esc(en[j] ?? '')}">${esc(t)}</li>`).join('');
+      return `<article class="svc reveal">
+        <div class="svc-media"><img src="${esc(s.image)}" alt="" loading="lazy"></div>
+        <div class="svc-body">
+          <span class="svc-index">${idx2(i)}</span>
+          <h3 data-en="${esc(s.title?.en)}">${esc(s.title?.ar)}</h3>
+          <p data-en="${esc(s.desc?.en)}">${esc(s.desc?.ar)}</p>
+          <ul class="svc-tags">${tags}</ul>
+        </div>
+      </article>`;
+    }).join('');
+  }
+  function renderWorks(arr) {
+    const box = document.querySelector('.work-grid');
+    if (!box) return;
+    box.innerHTML = arr.map((w) => `
+      <a class="work-card" data-cat="${esc(w.cat)}" href="#contact">
+        <img src="${esc(w.image)}" alt="" loading="lazy">
+        <div class="work-meta"><span class="work-cat" data-en="${esc(w.catLabel?.en)}">${esc(w.catLabel?.ar)}</span><h3 data-en="${esc(w.title?.en)}">${esc(w.title?.ar)}</h3></div>
+      </a>`).join('');
+  }
+  function renderTestimonials(arr) {
+    const box = document.querySelector('.quote-grid');
+    if (!box) return;
+    box.innerHTML = arr.map((t) => `
+      <blockquote class="reveal">
+        <p data-en="${esc(t.quote?.en)}">${esc(t.quote?.ar)}</p>
+        <footer><span class="q-name" data-en="${esc(t.name?.en)}">${esc(t.name?.ar)}</span><span class="q-role" data-en="${esc(t.role?.en)}">${esc(t.role?.ar)}</span></footer>
+      </blockquote>`).join('');
+  }
+
   hydrateContent();
 
   /* ---------- waveform bars (signature, calm) ---------- */
@@ -171,8 +227,7 @@
   onScrollSpine();
   window.addEventListener('scroll', onScrollSpine, { passive: true });
 
-  /* ---------- reveal on scroll (scroll-sweep, no IO dependency) ---------- */
-  const revealTargets = $$('.reveal, .hero-title, .svc, blockquote');
+  /* ---------- reveal on scroll (live sweep — safe across re-rendered sections) ---------- */
   const show = el => el.classList.add('in');
   const inView = el => {
     const r = el.getBoundingClientRect();
@@ -182,26 +237,21 @@
     $('.hero-title') && show($('.hero-title'));
     $$('.hero .reveal').forEach((el, i) => setTimeout(() => show(el), 90 + i * 80));
   };
-
-  if (reduce) {
-    revealTargets.forEach(show);
-  } else {
-    // Hero owns its own staggered entrance; keep it out of the sweep so the
-    // synchronous first sweep doesn't reveal all hero items at once.
-    let pending = revealTargets.filter(el => !el.closest('.hero'));
-    const sweep = () => {
-      if (!pending.length) return;
-      pending = pending.filter(el => { if (inView(el)) { show(el); return false; } return true; });
-    };
-    revealHero();
+  // Live query each pass so nodes added by hydration (svc/works/quotes) are covered.
+  const sweep = () => {
+    document.querySelectorAll('.reveal:not(.in)').forEach(el => {
+      if (!el.closest('.hero') && inView(el)) show(el);
+    });
+  };
+  revealHero();
+  if (!reduce) { // reduced-motion shows all .reveal via CSS, so no sweep needed
     sweep();
     window.addEventListener('scroll', sweep, { passive: true });
     window.addEventListener('resize', sweep, { passive: true });
     window.addEventListener('load', () => setTimeout(sweep, 300));
   }
 
-  /* ---------- animated count-up stats ---------- */
-  const stats = $$('.stat');
+  /* ---------- animated count-up stats (live; each stat counts once) ---------- */
   const runCount = (el) => {
     const target = +el.dataset.count;
     const suffix = el.dataset.suffix || '';
@@ -216,13 +266,11 @@
     };
     requestAnimationFrame(step);
   };
-  let pendingStats = stats.slice();
   const sweepStats = () => {
-    if (!pendingStats.length) return;
-    pendingStats = pendingStats.filter(s => {
+    document.querySelectorAll('.stat').forEach(s => {
+      if (s.dataset.counted) return;
       const r = s.getBoundingClientRect();
-      if (r.top < (window.innerHeight || 800) * 0.85 && r.bottom > 0) { runCount(s); return false; }
-      return true;
+      if (r.top < (window.innerHeight || 800) * 0.85 && r.bottom > 0) { s.dataset.counted = '1'; runCount(s); }
     });
   };
   sweepStats();
@@ -232,13 +280,12 @@
 
   /* ---------- work filter ---------- */
   const filters = $$('.filter:not(.lang)');
-  const cards = $$('.work-card');
   filters.forEach(btn => {
     btn.addEventListener('click', () => {
       filters.forEach(b => { b.classList.remove('is-active'); b.setAttribute('aria-pressed', 'false'); });
       btn.classList.add('is-active'); btn.setAttribute('aria-pressed', 'true');
       const f = btn.dataset.filter;
-      cards.forEach(card => {
+      document.querySelectorAll('.work-card').forEach(card => {
         const showCard = f === 'all' || card.dataset.cat === f;
         clearTimeout(card._hideT); // cancel any pending hide from a prior click
         if (reduce) { card.classList.toggle('hide', !showCard); return; }

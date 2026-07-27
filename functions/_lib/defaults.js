@@ -40,7 +40,37 @@ export const DEFAULT_CONTENT = {
     { id: 'srv', number: 560, suffix: '+', label: { ar: 'خدمة قُدّمت', en: 'Services delivered' } },
     { id: 'team', number: 20, suffix: '+', label: { ar: 'مبدع في الفريق', en: 'Creatives on the team' } },
   ],
-  services: [],
-  works: [],
-  testimonials: [],
+  services: [
+    {
+      id: 'svc1', image: 'assets/img/screen-teal-800.jpg',
+      title: { ar: 'تغطية الفعاليات', en: 'Event Coverage' },
+      desc: { ar: 'كل عمليات الفعالية تحت سقف واحد، مضبوطة قبل أن تُفتح الأبواب.', en: 'Every operation of an event under one roof, dialed in before doors open.' },
+      tags: { ar: ['تصوير فوتوغرافي', 'تصوير فيديو', 'شاشات LED', 'بث مباشر', 'هندسة صوت', 'فنانون مباشرون'], en: ['Photography', 'Videography', 'LED Screens', 'Live Broadcasting', 'Audio Engineering', 'Live Performers'] },
+    },
+    {
+      id: 'svc2', image: 'assets/img/vocal-booth-800.jpg',
+      title: { ar: 'الإنتاج الصوتي', en: 'Audio Production' },
+      desc: { ar: 'كتابة وتسجيل ومكساج داخل الاستوديو — من صوت منفرد إلى أوبريت كامل.', en: 'Written, tracked, and mixed in-house — from a solo vocal to a full operetta.' },
+      tags: { ar: ['أغانٍ', 'أهازيج شعبية', 'أناشيد', 'زفّات', 'مسرح غنائي', 'أوبريتات'], en: ['Songs', 'Folkloric Chanting', 'Nasheeds', 'Wedding Tracks', 'Musical Theater', 'Operettas'] },
+    },
+    {
+      id: 'svc3', image: 'assets/img/keyboard-hands-800.jpg',
+      title: { ar: 'الإنتاج المرئي', en: 'Video Production' },
+      desc: { ar: 'من الفكرة إلى التدرّج اللوني — قصص تُصنع لتُشاهد أكثر من مرة.', en: 'Concept to color grade — stories built to be watched more than once.' },
+      tags: { ar: ['إعلانات', 'أفلام قصيرة', 'أفلام تعريفية', 'إخراج', 'مونتاج', 'تصحيح ألوان'], en: ['Commercials', 'Short Films', 'Brand Films', 'Direction', 'Editing', 'Color'] },
+    },
+  ],
+  works: [
+    { id: 'w1', cat: 'visual', image: 'assets/img/signage-800.jpg', catLabel: { ar: 'إنتاج مرئي', en: 'Visual Production' }, title: { ar: 'فيلم تعريفي — تراك', en: 'Brand Film — Track' } },
+    { id: 'w2', cat: 'audio', image: 'assets/img/midi-keys-800.jpg', catLabel: { ar: 'إنتاج صوتي', en: 'Audio Production' }, title: { ar: 'أوبريت — جلسة مباشرة', en: 'Operetta — Live Session' } },
+    { id: 'w3', cat: 'event', image: 'assets/img/screen-teal-800.jpg', catLabel: { ar: 'تغطية فعاليات', en: 'Event Coverage' }, title: { ar: 'مهرجان — مسرح LED', en: 'Festival — LED Stage' } },
+    { id: 'w4', cat: 'audio', image: 'assets/img/vocal-booth-800.jpg', catLabel: { ar: 'إنتاج صوتي', en: 'Audio Production' }, title: { ar: 'نشيد — نسخة استوديو', en: 'Nasheed — Studio Cut' } },
+    { id: 'w5', cat: 'visual', image: 'assets/img/keyboard-hands-800.jpg', catLabel: { ar: 'إنتاج مرئي', en: 'Visual Production' }, title: { ar: 'إعلان — ما بعد الإنتاج', en: 'Commercial — Post' } },
+    { id: 'w6', cat: 'event', image: 'assets/img/lounge-800.jpg', catLabel: { ar: 'تغطية فعاليات', en: 'Event Coverage' }, title: { ar: 'فعالية مؤسسية — تغطية كاملة', en: 'Corporate — Full Coverage' } },
+  ],
+  testimonials: [
+    { id: 't1', quote: { ar: 'غيّرت تراك هوية علامتنا بالكامل. الرؤية التي وصلنا إليها فاقت كل توقعاتنا.', en: 'Track transformed our brand identity completely. The vision we reached was unlike anything we expected.' }, name: { ar: 'ليلى علي', en: 'Laila Ali' }, role: { ar: 'رائدة أعمال', en: 'Entrepreneur' } },
+    { id: 't2', quote: { ar: 'تجربة رائعة من البداية إلى النهاية. كان الإخراج الفني والتنفيذ في أعلى مستوى.', en: 'A wonderful experience end to end. The artistic direction and the execution were both outstanding.' }, name: { ar: 'أحمد الراشد', en: 'Ahmed Al Rashid' }, role: { ar: 'أخصائي تسويق', en: 'Marketing Specialist' } },
+    { id: 't3', quote: { ar: 'أصبح الأسلوب الذي قدّمته تراك أساس معرضنا. عملٌ استثنائيٌّ بحق.', en: 'The style Track delivered became the foundation of our gallery. Truly exceptional work.' }, name: { ar: 'نورة السالمي', en: 'Noura Al Salmi' }, role: { ar: 'مهتمة بالفن', en: 'Art Enthusiast' } },
+  ],
 };
