@@ -32,6 +32,7 @@ export const DEFAULT_CONTENT = {
     },
     footerTag: { ar: 'إبداعٌ يستحق كل لحظة.', en: 'Creativity worth every moment.' },
     heroVideo: '', // optional /media/... URL; when set, plays as the hero background
+    heroSlides: ['assets/img/corridor-800.jpg', 'assets/img/audio-studio-800.jpg', 'assets/img/vocal-booth-800.jpg'],
   },
   stats: [
     { id: 'yrs', number: 13, suffix: '+', label: { ar: 'سنة في المجال', en: 'Years in the field' } },

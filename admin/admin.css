@@ -52,4 +52,7 @@ legend{color:var(--teal);font-weight:700;padding:0 8px;font-size:1rem}
 .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
 .hint{color:var(--muted);font-size:.85rem;margin-top:6px}
 .field input[type=file]{padding:.5em;background:var(--bg)}
+.thumb{width:100%;max-width:220px;aspect-ratio:16/9;object-fit:cover;border-radius:8px;
+  border:1px solid var(--line);background:var(--bg);display:block;margin-bottom:6px}
+.thumb:not([src]),.thumb[src=""]{opacity:.4}
 @media(max-width:640px){fieldset{grid-template-columns:1fr}}

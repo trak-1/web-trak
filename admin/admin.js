@@ -44,6 +44,7 @@ async function loadContent() {
   $('#f_address_ar').value = c.address?.ar ?? '';
   $('#f_address_en').value = c.address?.en ?? '';
   showHeroVideo();
+  showSlides();
 }
 
 function showHeroVideo() {
@@ -81,6 +82,37 @@ function clearHeroVideo() {
   CONTENT.site.heroVideo = '';
   showHeroVideo();
   $('#heroVideoStatus').textContent = 'سيُزال الفيديو عند الحفظ (رجوع للصور)';
+}
+
+const DEFAULT_SLIDES = ['assets/img/corridor-800.jpg', 'assets/img/audio-studio-800.jpg', 'assets/img/vocal-booth-800.jpg'];
+function showSlides() {
+  const arr = (CONTENT?.site?.heroSlides && CONTENT.site.heroSlides.length) ? CONTENT.site.heroSlides : DEFAULT_SLIDES;
+  for (let i = 0; i < 3; i++) {
+    const img = $('#slideThumb' + i);
+    if (img) img.src = (arr[i] || DEFAULT_SLIDES[i]) + (arr[i] && arr[i].startsWith('/media/') ? '' : '');
+  }
+}
+async function uploadSlide(i) {
+  const f = $('#slideFile' + i).files[0];
+  const st = $('#slideStatus');
+  if (!f) { st.style.color = '#ff8a7a'; st.textContent = 'اختر صورة أولًا'; return; }
+  st.style.color = ''; st.textContent = `جارٍ رفع الصورة ${i + 1}…`;
+  const fd = new FormData(); fd.append('file', f);
+  let r;
+  try { r = await api('/api/upload', { method: 'POST', body: fd }); }
+  catch { st.style.color = '#ff8a7a'; st.textContent = 'تعذّر الاتصال'; return; }
+  if (!r.ok) {
+    const e = await r.json().catch(() => ({}));
+    st.style.color = '#ff8a7a';
+    st.textContent = r.status === 401 ? 'انتهت الجلسة — سجّل الدخول' : ('تعذّر الرفع: ' + (e?.error?.message || r.status));
+    return;
+  }
+  const { url } = await r.json();
+  CONTENT.site = CONTENT.site || {};
+  if (!Array.isArray(CONTENT.site.heroSlides) || CONTENT.site.heroSlides.length < 3) CONTENT.site.heroSlides = [...DEFAULT_SLIDES];
+  CONTENT.site.heroSlides[i] = url;
+  showSlides();
+  st.textContent = `تم رفع الصورة ${i + 1} ✓ — اضغط "حفظ التغييرات" لتثبيتها`;
 }
 
 async function save() {
@@ -122,3 +154,5 @@ $('#saveBtn').addEventListener('click', save);
 $('#logoutBtn').addEventListener('click', logout);
 $('#heroVideoUpload').addEventListener('click', uploadHeroVideo);
 $('#heroVideoClear').addEventListener('click', clearHeroVideo);
+document.querySelectorAll('button[data-slide]').forEach((b) =>
+  b.addEventListener('click', () => uploadSlide(+b.dataset.slide)));

@@ -99,6 +99,10 @@
       if (ph && s.contact.phone) { ph.textContent = s.contact.phone; ph.href = 'tel:' + s.contact.phone.replace(/\s/g, ''); }
       setPair(q('[data-cms="address"]'), s.contact.address);
     }
+    if (Array.isArray(s.heroSlides) && s.heroSlides.length) {
+      const slides = document.querySelectorAll('#heroSlides .hero-slide');
+      s.heroSlides.forEach((url, i) => { if (slides[i] && url) slides[i].style.backgroundImage = `url('${url}')`; });
+    }
     if (s.heroVideo) mountHeroVideo(s.heroVideo);
     applyLang(LANG);   // re-apply so the active language reflects fresh data
   }
