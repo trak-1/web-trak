@@ -1,13 +1,6 @@
+# Cloudflare Pages configuration.
+# KV/R2 bindings are set in the Pages dashboard (Settings → Bindings), not here,
+# so the build never depends on a placeholder id.
 name = "web-trak"
 pages_build_output_dir = "."
 compatibility_date = "2024-11-01"
-
-# Filled after creating the KV namespace (see docs/deploy-cloudflare.md).
-[[kv_namespaces]]
-binding = "TRACK_CONTENT"
-id = "REPLACE_WITH_KV_ID"
-
-# Created in Phase 2 (image uploads).
-[[r2_buckets]]
-binding = "TRACK_MEDIA"
-bucket_name = "track-media"
