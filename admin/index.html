@@ -41,6 +41,19 @@
   <section class="panel" id="panel-texts">
     <div class="grid">
 
+      <fieldset><legend>خلفية الهيرو (فيديو)</legend>
+        <div class="field wide">
+          <label>فيديو الهيرو — عند رفعه يظهر بدل صور الخلفية (mp4 أو webm، حتى 80MB)</label>
+          <input type="file" id="heroVideoFile" accept="video/mp4,video/webm">
+          <div class="row">
+            <button type="button" class="btn btn-ghost" id="heroVideoUpload">رفع الفيديو</button>
+            <button type="button" class="btn btn-ghost" id="heroVideoClear">إزالة (رجوع للصور)</button>
+          </div>
+          <p class="msg" id="heroVideoStatus"></p>
+          <p class="hint">الحالي: <span id="heroVideoCurrent" dir="ltr">لا يوجد (صور)</span></p>
+        </div>
+      </fieldset>
+
       <fieldset><legend>الهيرو (الواجهة)</legend>
         <div class="field"><label>الشريط العلوي — عربي</label><input id="f_heroEyebrow_ar"></div>
         <div class="field"><label>الشريط العلوي — إنجليزي</label><input id="f_heroEyebrow_en" dir="ltr"></div>

@@ -7,5 +7,6 @@ export function onRequestGet({ env }) {
     hasPassword: !!env.ADMIN_PASSWORD,
     hasSecret: !!env.SESSION_SECRET,
     hasKV: !!env.TRACK_CONTENT,
+    hasMedia: !!env.TRACK_MEDIA,
   });
 }

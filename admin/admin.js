@@ -43,6 +43,44 @@ async function loadContent() {
   $('#f_phone').value = c.phone ?? '';
   $('#f_address_ar').value = c.address?.ar ?? '';
   $('#f_address_en').value = c.address?.en ?? '';
+  showHeroVideo();
+}
+
+function showHeroVideo() {
+  const v = CONTENT?.site?.heroVideo || '';
+  $('#heroVideoCurrent').textContent = v || 'لا يوجد (صور)';
+}
+
+async function uploadHeroVideo() {
+  const f = $('#heroVideoFile').files[0];
+  const st = $('#heroVideoStatus');
+  if (!f) { st.style.color = '#ff8a7a'; st.textContent = 'اختر ملف فيديو أولًا'; return; }
+  st.style.color = '';
+  st.textContent = 'جارٍ الرفع… قد يستغرق حسب حجم الملف';
+  const fd = new FormData();
+  fd.append('file', f);
+  let r;
+  try { r = await api('/api/upload', { method: 'POST', body: fd }); }
+  catch { st.style.color = '#ff8a7a'; st.textContent = 'تعذّر الاتصال'; return; }
+  if (!r.ok) {
+    const e = await r.json().catch(() => ({}));
+    st.style.color = '#ff8a7a';
+    st.textContent = r.status === 401 ? 'انتهت الجلسة — سجّل الدخول' : ('تعذّر الرفع: ' + (e?.error?.message || r.status));
+    return;
+  }
+  const { url } = await r.json();
+  CONTENT.site = CONTENT.site || {};
+  CONTENT.site.heroVideo = url;
+  showHeroVideo();
+  st.textContent = 'تم الرفع ✓ — اضغط "حفظ التغييرات" لتثبيته على الموقع';
+}
+
+function clearHeroVideo() {
+  if (!CONTENT) return;
+  CONTENT.site = CONTENT.site || {};
+  CONTENT.site.heroVideo = '';
+  showHeroVideo();
+  $('#heroVideoStatus').textContent = 'سيُزال الفيديو عند الحفظ (رجوع للصور)';
 }
 
 async function save() {
@@ -82,3 +120,5 @@ async function logout() {
 $('#loginForm').addEventListener('submit', login);
 $('#saveBtn').addEventListener('click', save);
 $('#logoutBtn').addEventListener('click', logout);
+$('#heroVideoUpload').addEventListener('click', uploadHeroVideo);
+$('#heroVideoClear').addEventListener('click', clearHeroVideo);

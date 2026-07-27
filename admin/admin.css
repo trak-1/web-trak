@@ -49,4 +49,7 @@ legend{color:var(--teal);font-weight:700;padding:0 8px;font-size:1rem}
   color:var(--text);font-family:var(--ff);font-size:.98rem;padding:.6em .8em;resize:vertical;width:100%}
 .field input:focus,.field textarea:focus{outline:none;border-color:var(--teal);
   box-shadow:0 0 0 3px rgba(31,199,194,.15)}
+.row{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+.hint{color:var(--muted);font-size:.85rem;margin-top:6px}
+.field input[type=file]{padding:.5em;background:var(--bg)}
 @media(max-width:640px){fieldset{grid-template-columns:1fr}}

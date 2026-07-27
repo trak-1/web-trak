@@ -31,6 +31,7 @@ export const DEFAULT_CONTENT = {
       address: { ar: 'الرياض · شارع الأمير بندر بن عبدالعزيز', en: 'Riyadh · Prince Bandar Bin Abdulaziz St.' },
     },
     footerTag: { ar: 'إبداعٌ يستحق كل لحظة.', en: 'Creativity worth every moment.' },
+    heroVideo: '', // optional /media/... URL; when set, plays as the hero background
   },
   stats: [
     { id: 'yrs', number: 13, suffix: '+', label: { ar: 'سنة في المجال', en: 'Years in the field' } },

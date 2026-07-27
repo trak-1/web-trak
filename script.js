@@ -99,7 +99,25 @@
       if (ph && s.contact.phone) { ph.textContent = s.contact.phone; ph.href = 'tel:' + s.contact.phone.replace(/\s/g, ''); }
       setPair(q('[data-cms="address"]'), s.contact.address);
     }
+    if (s.heroVideo) mountHeroVideo(s.heroVideo);
     applyLang(LANG);   // re-apply so the active language reflects fresh data
+  }
+
+  // Mount an admin-uploaded hero video over the image slides. If it errors, it
+  // removes itself so the CSS image crossfade shows through (fallback).
+  function mountHeroVideo(url) {
+    const media = document.querySelector('.hero-media');
+    if (!media || !url) return;
+    media.querySelector('video.hero-vid')?.remove();
+    const v = document.createElement('video');
+    v.className = 'hero-vid';
+    v.src = url;
+    v.muted = true; v.loop = true; v.playsInline = true; v.preload = 'auto';
+    v.setAttribute('playsinline', '');
+    v.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(1.04) contrast(1.02)';
+    v.addEventListener('error', () => v.remove());
+    media.insertBefore(v, media.querySelector('.hero-grain') || null);
+    if (!reduce) v.play?.().catch(() => {});
   }
   hydrateContent();
 
@@ -250,6 +268,8 @@
     vtoggle?.addEventListener('click', (e) => {
       e.preventDefault();
       const paused = heroSlides.classList.toggle('paused');
+      const vid = document.querySelector('.hero-media video.hero-vid');
+      if (vid) { if (paused) vid.pause(); else vid.play?.().catch(() => {}); }
       setToggle(!paused);
     });
   }
