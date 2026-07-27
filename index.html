@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>تراك — إنتاج سمعي بصري · الرياض</title>
+<meta name="description" content="تراك شركة سعودية للإنتاج السمعي البصري. ثلاثة عشر عامًا نحوّل الأفكار إلى فعاليات وصوتٍ وفيلم. كل المسارات تؤدي إلينا." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Tajawal:wght@400;500;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<script>
+(function(){var l='ar';try{l=localStorage.getItem('track-lang')||'ar';}catch(e){}
+var d=document.documentElement;d.className='js '+(l==='en'?'en':'ar');d.lang=l;d.dir=l==='en'?'ltr':'rtl';})();
+</script>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- signal line: vertical scroll progress spine -->
+<div class="spine" aria-hidden="true"><span class="spine-fill"></span><span class="spine-node"></span></div>
+
+<!-- header -->
+<header class="nav" id="nav">
+  <a class="brand" href="#top" aria-label="تراك — الرئيسية" data-en-aria="Track — home">
+    <span class="brand-word">Track</span>
+    <svg class="brand-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 3.5 L20 12 L4 20.5 Z"/></svg>
+    <span class="brand-tag" data-cms="brandTag" data-en="Art Production">إنتاج فني</span>
+  </a>
+  <nav class="nav-links" aria-label="التنقّل">
+    <a href="#work" data-en="Work">الأعمال</a>
+    <a href="#services" data-en="Services">الخدمات</a>
+    <a href="#studio" data-en="Studio">الاستوديو</a>
+    <a href="#about" data-en="About">من نحن</a>
+    <a href="#contact" data-en="Contact">تواصل</a>
+  </nav>
+  <div class="nav-right">
+    <button class="lang" type="button" aria-label="Switch to English">EN</button>
+    <a class="btn btn-sm" href="#contact" data-en="Start a project">ابدأ مشروعك</a>
+  </div>
+  <button class="burger" id="burger" type="button" aria-label="القائمة" data-en-aria="Menu" aria-expanded="false"><span></span><span></span></button>
+</header>
+
+<div class="mobile-menu" id="mobileMenu" hidden>
+  <a href="#work" data-en="Work">الأعمال</a>
+  <a href="#services" data-en="Services">الخدمات</a>
+  <a href="#studio" data-en="Studio">الاستوديو</a>
+  <a href="#about" data-en="About">من نحن</a>
+  <a href="#contact" data-en="Contact">تواصل</a>
+  <button class="lang lang-mobile" type="button" aria-label="Switch to English">English / الإنجليزية</button>
+  <a class="btn" href="#contact" data-en="Start a project">ابدأ مشروعك</a>
+</div>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-media">
+      <div class="hero-slides" id="heroSlides" aria-hidden="true">
+        <div class="hero-slide" style="background-image:url('assets/img/corridor-800.jpg')"></div>
+        <div class="hero-slide" style="background-image:url('assets/img/audio-studio-800.jpg')"></div>
+        <div class="hero-slide" style="background-image:url('assets/img/vocal-booth-800.jpg')"></div>
+      </div>
+      <div class="hero-grain" aria-hidden="true"></div>
+      <div class="hero-vignette" aria-hidden="true"></div>
+    </div>
+
+    <div class="hero-inner">
+      <p class="eyebrow reveal"><span class="dot"></span><span data-cms="heroEyebrow" data-en="Audio-Visual Production · Riyadh · Track">إنتاج سمعي بصري · الرياض · Track</span></p>
+      <h1 class="hero-title">
+        <span class="line reveal" data-cms="heroTitle1" data-en="All tracks">كل المسارات</span>
+        <span class="line reveal" data-cms="heroTitle2" data-en-html="lead to <em>us</em>">تؤدي <em>إلينا</em></span>
+      </h1>
+      <p class="hero-sub reveal" data-cms="heroSub" data-en="Creativity worth every moment. A Saudi production house turning ideas into events, sound, and film — for thirteen years.">إبداعٌ يستحق كل لحظة. دار إنتاج سعودية تحوّل الأفكار إلى فعاليات وصوتٍ وفيلم — منذ ثلاثة عشر عامًا.</p>
+      <div class="hero-cta reveal">
+        <a class="btn" href="#contact" data-en="Start a project">ابدأ مشروعك</a>
+        <a class="btn btn-ghost" href="#studio"><span class="play-mini">▶</span> <span data-en="Watch the reel">شاهد العرض</span></a>
+      </div>
+    </div>
+
+    <!-- signature waveform baseline -->
+    <div class="waveform" aria-hidden="true">
+      <div class="wf-bars" id="wfBars"></div>
+    </div>
+
+    <button class="hero-vtoggle" id="heroVToggle" type="button" aria-label="إيقاف الفيديو" data-en-aria="Pause background video" aria-pressed="true">
+      <span class="vt-pause">❚❚</span><span class="vt-play">▶</span>
+    </button>
+
+    <a class="scroll-cue" href="#stats" aria-label="مرِّر للأسفل" data-en-aria="Scroll down">
+      <span class="tc" data-en="scroll">مرِّر للأسفل</span>
+      <span class="cue-line"></span>
+    </a>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span data-en="Event Coverage">تغطية الفعاليات</span><span class="sep">✳</span>
+      <span data-en="Audio Production">الإنتاج الصوتي</span><span class="sep">✳</span>
+      <span data-en="Film & Commercials">أفلام وإعلانات</span><span class="sep">✳</span>
+      <span data-en="Live Broadcasting">البث المباشر</span><span class="sep">✳</span>
+      <span data-en="LED Screens">شاشات LED</span><span class="sep">✳</span>
+      <span data-en="Nasheeds & Operettas">أناشيد وأوبريتات</span><span class="sep">✳</span>
+      <span data-en="Event Coverage">تغطية الفعاليات</span><span class="sep">✳</span>
+      <span data-en="Audio Production">الإنتاج الصوتي</span><span class="sep">✳</span>
+      <span data-en="Film & Commercials">أفلام وإعلانات</span><span class="sep">✳</span>
+      <span data-en="Live Broadcasting">البث المباشر</span><span class="sep">✳</span>
+      <span data-en="LED Screens">شاشات LED</span><span class="sep">✳</span>
+      <span data-en="Nasheeds & Operettas">أناشيد وأوبريتات</span><span class="sep">✳</span>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <section class="stats" id="stats">
+    <div class="stat" data-count="13" data-suffix="+">
+      <span class="stat-num">0</span>
+      <span class="stat-label"><span class="tc">01</span> <span data-en="Years in the field">سنة في المجال</span></span>
+    </div>
+    <div class="stat" data-count="120" data-suffix="+">
+      <span class="stat-num">0</span>
+      <span class="stat-label"><span class="tc">02</span> <span data-en="Projects & partnerships">مشروع وشراكة</span></span>
+    </div>
+    <div class="stat" data-count="560" data-suffix="+">
+      <span class="stat-num">0</span>
+      <span class="stat-label"><span class="tc">03</span> <span data-en="Services delivered">خدمة قُدّمت</span></span>
+    </div>
+    <div class="stat" data-count="20" data-suffix="+">
+      <span class="stat-num">0</span>
+      <span class="stat-label"><span class="tc">04</span> <span data-en="Creatives on the team">مبدع في الفريق</span></span>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="about-copy">
+      <p class="eyebrow reveal"><span class="tc" data-en="/ about">/ من نحن</span></p>
+      <h2 class="reveal" data-cms="aboutHeading" data-en-html="It's not just the years — it's the <em>expertise</em> the years built.">ليست السنوات وحدها — بل <em>الخبرة</em> التي بنتها السنوات.</h2>
+      <p class="lead reveal" data-cms="aboutLead" data-en="Track is a Saudi company built for audio-visual production. We plan an event from the first idea to the final frame, engineer the sound that carries it, and shoot the film that outlives the night.">تراك شركة سعودية متخصصة في الإنتاج السمعي البصري. نخطّط للفعالية من الفكرة الأولى إلى اللقطة الأخيرة، ونُهندس الصوت الذي يحملها، ونصوّر الفيلم الذي يبقى بعد انتهاء الليلة.</p>
+      <p class="reveal" data-cms="aboutBody" data-en="One team runs the whole chain — direction, capture, audio, and edit — so nothing gets lost in a handoff. That's how a moment stays true from the room it happened in to the screen it lives on.">فريق واحد يدير السلسلة كاملة — الإخراج والتصوير والصوت والمونتاج — حتى لا يضيع شيء بين مرحلة وأخرى. هكذا تبقى اللحظة صادقة من الغرفة التي حدثت فيها إلى الشاشة التي تعيش عليها.</p>
+      <a class="link-arrow reveal" href="#services" data-en-html="See what we do <span>&rarr;</span>">شاهد ما نقدّمه <span>&larr;</span></a>
+    </div>
+    <div class="about-media reveal">
+      <img src="assets/img/corridor-800.jpg" alt="ممر استوديو تراك المضاء بخطوط LED" loading="lazy" width="800" height="450">
+      <span class="frame-tc" data-en="TRK_001 · studio corridor">TRK_001 · ممر الاستوديو</span>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="section-head">
+      <p class="eyebrow"><span class="tc" data-en="/ services">/ الخدمات</span></p>
+      <h2 data-en="From the idea to the execution — we run all of it.">من الفكرة إلى التنفيذ — ندير كل ذلك.</h2>
+    </div>
+
+    <div class="svc-list">
+      <article class="svc reveal">
+        <div class="svc-media"><img src="assets/img/screen-teal-800.jpg" alt="إعداد تغطية فعالية مباشرة" loading="lazy" width="800" height="450"></div>
+        <div class="svc-body">
+          <span class="svc-index">01</span>
+          <h3 data-en="Event Coverage">تغطية الفعاليات</h3>
+          <p data-en="Every operation of an event under one roof, dialed in before doors open.">كل عمليات الفعالية تحت سقف واحد، مضبوطة قبل أن تُفتح الأبواب.</p>
+          <ul class="svc-tags">
+            <li data-en="Photography">تصوير فوتوغرافي</li><li data-en="Videography">تصوير فيديو</li><li data-en="LED Screens">شاشات LED</li>
+            <li data-en="Live Broadcasting">بث مباشر</li><li data-en="Audio Engineering">هندسة صوت</li><li data-en="Live Performers">فنانون مباشرون</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="svc reveal">
+        <div class="svc-media"><img src="assets/img/vocal-booth-800.jpg" alt="غرفة تسجيل صوتي بميكروفون استوديو" loading="lazy" width="800" height="450"></div>
+        <div class="svc-body">
+          <span class="svc-index">02</span>
+          <h3 data-en="Audio Production">الإنتاج الصوتي</h3>
+          <p data-en="Written, tracked, and mixed in-house — from a solo vocal to a full operetta.">كتابة وتسجيل ومكساج داخل الاستوديو — من صوت منفرد إلى أوبريت كامل.</p>
+          <ul class="svc-tags">
+            <li data-en="Songs">أغانٍ</li><li data-en="Folkloric Chanting">أهازيج شعبية</li><li data-en="Nasheeds">أناشيد</li>
+            <li data-en="Wedding Tracks">زفّات</li><li data-en="Musical Theater">مسرح غنائي</li><li data-en="Operettas">أوبريتات</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="svc reveal">
+        <div class="svc-media"><img src="assets/img/keyboard-hands-800.jpg" alt="غرفة مونتاج ومنتج أثناء العمل" loading="lazy" width="800" height="450"></div>
+        <div class="svc-body">
+          <span class="svc-index">03</span>
+          <h3 data-en="Video Production">الإنتاج المرئي</h3>
+          <p data-en="Concept to color grade — stories built to be watched more than once.">من الفكرة إلى التدرّج اللوني — قصص تُصنع لتُشاهد أكثر من مرة.</p>
+          <ul class="svc-tags">
+            <li data-en="Commercials">إعلانات</li><li data-en="Short Films">أفلام قصيرة</li><li data-en="Brand Films">أفلام تعريفية</li>
+            <li data-en="Direction">إخراج</li><li data-en="Editing">مونتاج</li><li data-en="Color">تصحيح ألوان</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- STUDIO — scroll-driven video tour (the video scrubs as you scroll) -->
+  <section class="scrolly" id="studio">
+    <div class="scrolly-track" id="scrollyTrack">
+      <div class="scrolly-stage">
+        <canvas class="scrolly-canvas" id="scrollyCanvas" aria-label="جولة مصوّرة داخل استوديو تراك" role="img"></canvas>
+        <div class="scrolly-shade" aria-hidden="true"></div>
+
+        <div class="scrolly-head">
+          <p class="eyebrow"><span class="tc" data-en="/ studio tour">/ جولة الاستوديو</span></p>
+          <h2 data-en="Scroll through the studio.">تنقّل داخل الاستوديو.</h2>
+        </div>
+
+        <div class="chapters" id="chapters">
+          <article class="chapter is-active" data-start="0" data-end="0.16">
+            <span class="ch-index"><span class="tc">01</span> / 06</span>
+            <h3 data-en="The corridor">الممر</h3>
+            <p data-en="LED lines draw you in.">خطوط الضوء تقودك إلى الداخل.</p>
+          </article>
+          <article class="chapter" data-start="0.16" data-end="0.31">
+            <span class="ch-index"><span class="tc">02</span> / 06</span>
+            <h3 data-en="Meeting room">غرفة الاجتماعات</h3>
+            <p data-en="Where the idea takes shape.">حيث تتشكّل الفكرة.</p>
+          </article>
+          <article class="chapter" data-start="0.31" data-end="0.5">
+            <span class="ch-index"><span class="tc">03</span> / 06</span>
+            <h3 data-en="Photography studio">استوديو التصوير</h3>
+            <p data-en="Sets, lighting, and lenses.">إضاءة وعدسات وخلفيات.</p>
+          </article>
+          <article class="chapter" data-start="0.5" data-end="0.68">
+            <span class="ch-index"><span class="tc">04</span> / 06</span>
+            <h3 data-en="Mixing suite">استوديو المونتاج</h3>
+            <p data-en="Every frame gets its color.">كل لقطة تأخذ لونها.</p>
+          </article>
+          <article class="chapter" data-start="0.68" data-end="0.83">
+            <span class="ch-index"><span class="tc">05</span> / 06</span>
+            <h3 data-en="Sound production">استوديو الصوت</h3>
+            <p data-en="Melodies built by hand.">ألحان تُصنع بأيدٍ خبيرة.</p>
+          </article>
+          <article class="chapter" data-start="0.83" data-end="1.01">
+            <span class="ch-index"><span class="tc">06</span> / 06</span>
+            <h3 data-en="Vocal booth">غرفة التسجيل</h3>
+            <p data-en="Where the voice is captured.">حيث يُلتقط الصوت.</p>
+          </article>
+        </div>
+
+        <div class="scrolly-progress"><span id="scrollyBar"></span></div>
+        <span class="scrolly-cue" id="scrollyCue" data-en="Keep scrolling">تابع التمرير للأسفل</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section class="work" id="work">
+    <div class="section-head">
+      <p class="eyebrow"><span class="tc" data-en="/ selected work">/ أعمال مختارة</span></p>
+      <h2 data-en="A curated cut of recent projects.">مجموعة مختارة من أحدث المشاريع.</h2>
+    </div>
+
+    <div class="filters" id="filters" role="group" aria-label="تصفية الأعمال">
+      <button class="filter is-active" type="button" data-filter="all" aria-pressed="true" data-en="All work">كل الأعمال</button>
+      <button class="filter" type="button" data-filter="event" aria-pressed="false" data-en="Event Coverage">تغطية الفعاليات</button>
+      <button class="filter" type="button" data-filter="audio" aria-pressed="false" data-en="Audio Production">الإنتاج الصوتي</button>
+      <button class="filter" type="button" data-filter="visual" aria-pressed="false" data-en="Visual Production">الإنتاج المرئي</button>
+    </div>
+
+    <div class="work-grid" id="workGrid">
+      <a class="work-card" data-cat="visual" href="#contact">
+        <img src="assets/img/signage-800.jpg" alt="" loading="lazy" width="800" height="450">
+        <div class="work-meta"><span class="work-cat" data-en="Visual Production">إنتاج مرئي</span><h3 data-en="Brand Film — Track">فيلم تعريفي — تراك</h3></div>
+      </a>
+      <a class="work-card" data-cat="audio" href="#contact">
+        <img src="assets/img/midi-keys-800.jpg" alt="" loading="lazy" width="800" height="450">
+        <div class="work-meta"><span class="work-cat" data-en="Audio Production">إنتاج صوتي</span><h3 data-en="Operetta — Live Session">أوبريت — جلسة مباشرة</h3></div>
+      </a>
+      <a class="work-card" data-cat="event" href="#contact">
+        <img src="assets/img/screen-teal-800.jpg" alt="" loading="lazy" width="800" height="450">
+        <div class="work-meta"><span class="work-cat" data-en="Event Coverage">تغطية فعاليات</span><h3 data-en="Festival — LED Stage">مهرجان — مسرح LED</h3></div>
+      </a>
+      <a class="work-card" data-cat="audio" href="#contact">
+        <img src="assets/img/vocal-booth-800.jpg" alt="" loading="lazy" width="800" height="450">
+        <div class="work-meta"><span class="work-cat" data-en="Audio Production">إنتاج صوتي</span><h3 data-en="Nasheed — Studio Cut">نشيد — نسخة استوديو</h3></div>
+      </a>
+      <a class="work-card" data-cat="visual" href="#contact">
+        <img src="assets/img/keyboard-hands-800.jpg" alt="" loading="lazy" width="800" height="450">
+        <div class="work-meta"><span class="work-cat" data-en="Visual Production">إنتاج مرئي</span><h3 data-en="Commercial — Post">إعلان — ما بعد الإنتاج</h3></div>
+      </a>
+      <a class="work-card" data-cat="event" href="#contact">
+        <img src="assets/img/lounge-800.jpg" alt="" loading="lazy" width="800" height="450">
+        <div class="work-meta"><span class="work-cat" data-en="Event Coverage">تغطية فعاليات</span><h3 data-en="Corporate — Full Coverage">فعالية مؤسسية — تغطية كاملة</h3></div>
+      </a>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="quotes">
+    <div class="section-head">
+      <p class="eyebrow"><span class="tc" data-en="/ clients">/ العملاء</span></p>
+      <h2 data-en="What it's like to work with Track.">كيف هو العمل مع تراك.</h2>
+    </div>
+    <div class="quote-grid">
+      <blockquote class="reveal">
+        <p data-en="Track transformed our brand identity completely. The vision we reached was unlike anything we expected.">غيّرت تراك هوية علامتنا بالكامل. الرؤية التي وصلنا إليها فاقت كل توقعاتنا.</p>
+        <footer><span class="q-name" data-en="Laila Ali">ليلى علي</span><span class="q-role" data-en="Entrepreneur">رائدة أعمال</span></footer>
+      </blockquote>
+      <blockquote class="reveal">
+        <p data-en="A wonderful experience end to end. The artistic direction and the execution were both outstanding.">تجربة رائعة من البداية إلى النهاية. كان الإخراج الفني والتنفيذ في أعلى مستوى.</p>
+        <footer><span class="q-name" data-en="Ahmed Al Rashid">أحمد الراشد</span><span class="q-role" data-en="Marketing Specialist">أخصائي تسويق</span></footer>
+      </blockquote>
+      <blockquote class="reveal">
+        <p data-en="The style Track delivered became the foundation of our gallery. Truly exceptional work.">أصبح الأسلوب الذي قدّمته تراك أساس معرضنا. عملٌ استثنائيٌّ بحق.</p>
+        <footer><span class="q-name" data-en="Noura Al Salmi">نورة السالمي</span><span class="q-role" data-en="Art Enthusiast">مهتمة بالفن</span></footer>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- CONTACT / CTA -->
+  <section class="contact" id="contact">
+    <div class="contact-grid">
+      <div class="contact-copy">
+        <p class="eyebrow"><span class="tc" data-en="/ contact">/ تواصل</span></p>
+        <h2 data-en-html="Let's create <em>together</em>.">لنُبدع <em>معًا</em>.</h2>
+        <p class="lead" data-en="Tell us what you're planning. We'll bring the rest.">أخبرنا بما تخطّط له، ونحن نتكفّل بالباقي.</p>
+        <ul class="contact-list">
+          <li><span class="c-label" data-en="Email">البريد</span><a href="mailto:info@trackksa.com" data-cms="email">info@trackksa.com</a></li>
+          <li><span class="c-label" data-en="Phone">الهاتف</span><a href="tel:+966500344410" dir="ltr" data-cms="phone">+966 50 034 4410</a></li>
+          <li><span class="c-label" data-en="Studio">الاستوديو</span><span data-cms="address" data-en="Riyadh · Prince Bandar Bin Abdulaziz St.">الرياض · شارع الأمير بندر بن عبدالعزيز</span></li>
+        </ul>
+      </div>
+
+      <form class="contact-form" id="contactForm" novalidate>
+        <div class="field">
+          <label for="name" data-en="Your name">اسمك</label>
+          <input id="name" name="name" type="text" autocomplete="name" required placeholder="الاسم الكامل" data-en-ph="Full name">
+        </div>
+        <div class="field">
+          <label for="email" data-en="Email">البريد الإلكتروني</label>
+          <input id="email" name="email" type="email" autocomplete="email" required placeholder="you@company.com" data-en-ph="you@company.com">
+        </div>
+        <div class="field">
+          <label for="type" data-en="Project type">نوع المشروع</label>
+          <select id="type" name="type">
+            <option data-en="Event Coverage">تغطية الفعاليات</option>
+            <option data-en="Audio Production">الإنتاج الصوتي</option>
+            <option data-en="Video Production">الإنتاج المرئي</option>
+            <option data-en="Something else">شيء آخر</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="msg" data-en="Tell us about it">احكِ لنا عنه</label>
+          <textarea id="msg" name="msg" rows="4" placeholder="التواريخ، النطاق، والأجواء التي تريدها…" data-en-ph="Dates, scope, the vibe you're after…"></textarea>
+        </div>
+        <button class="btn btn-full" type="submit" data-en="Send the brief">أرسل التفاصيل</button>
+        <p class="form-note" id="formNote" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="footer-top">
+    <a class="brand" href="#top" aria-label="تراك — الرئيسية" data-en-aria="Track — home">
+      <span class="brand-word">Track</span>
+      <svg class="brand-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 3.5 L20 12 L4 20.5 Z"/></svg>
+    </a>
+    <p class="footer-tag" data-cms="footerTag" data-en="Creativity worth every moment.">إبداعٌ يستحق كل لحظة.</p>
+  </div>
+  <div class="footer-cols">
+    <div>
+      <span class="f-head" data-en="Services">الخدمات</span>
+      <a href="#services" data-en="Event Coverage">تغطية الفعاليات</a>
+      <a href="#services" data-en="Audio Production">الإنتاج الصوتي</a>
+      <a href="#services" data-en="Visual Production">الإنتاج المرئي</a>
+    </div>
+    <div>
+      <span class="f-head" data-en="Studio">الاستوديو</span>
+      <a href="#work" data-en="Selected Work">أعمال مختارة</a>
+      <a href="#studio" data-en="The Facility">المقر</a>
+      <a href="#about" data-en="About Track">عن تراك</a>
+    </div>
+    <div>
+      <span class="f-head" data-en="Reach us">تواصل معنا</span>
+      <a href="mailto:info@trackksa.com">info@trackksa.com</a>
+      <a href="tel:+966500344410" dir="ltr">+966 50 034 4410</a>
+      <span class="f-muted" data-en="Riyadh, KSA">الرياض، السعودية</span>
+    </div>
+  </div>
+  <div class="footer-bar">
+    <span data-en="© 2026 Track — تراك. All rights reserved.">© 2026 تراك — Track. جميع الحقوق محفوظة.</span>
+    <span data-en="All tracks lead to us.">كل المسارات تؤدي إلينا.</span>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
