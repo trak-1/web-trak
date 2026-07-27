@@ -3,10 +3,26 @@ import { requireSession } from '../_lib/auth.js';
 import { validateContent } from '../_lib/validate.js';
 import { DEFAULT_CONTENT } from '../_lib/defaults.js';
 
+// Merge stored content over defaults: saved text/site fields win; empty or
+// missing lists fall back to the built-in defaults so the site/admin are never
+// bare while the owner hasn't customised a section yet.
+function merged(stored) {
+  if (!stored || typeof stored !== 'object') return DEFAULT_CONTENT;
+  const pick = (k) => (Array.isArray(stored[k]) && stored[k].length) ? stored[k] : DEFAULT_CONTENT[k];
+  return {
+    version: DEFAULT_CONTENT.version,
+    site: { ...DEFAULT_CONTENT.site, ...(stored.site || {}) },
+    stats: pick('stats'),
+    services: pick('services'),
+    works: pick('works'),
+    testimonials: pick('testimonials'),
+  };
+}
+
 export async function onRequestGet({ env }) {
   let doc = null;
   if (env.TRACK_CONTENT) doc = await env.TRACK_CONTENT.get('content', 'json');
-  return json(doc || DEFAULT_CONTENT);
+  return json(merged(doc));
 }
 
 export async function onRequestPut({ request, env }) {

@@ -38,6 +38,20 @@ body{background:var(--bg);color:var(--text);font-family:var(--ff);line-height:1.
 .tab.is-active{background:var(--teal);color:#04100f;border-color:var(--teal)}
 .tab:disabled{opacity:.5;cursor:not-allowed}
 
+.crud{display:flex;flex-direction:column;gap:16px;margin-bottom:16px}
+.card{border:1px solid var(--line);border-radius:14px;padding:18px;display:grid;
+  grid-template-columns:1fr 1fr;gap:12px;position:relative;background:rgba(255,255,255,.02)}
+.card .full{grid-column:1 / -1}
+.card .card-del{position:absolute;inset-inline-start:auto;inset-inline-end:12px;top:12px;
+  background:none;border:1px solid var(--line);color:#ff8a7a;border-radius:8px;padding:.3em .7em;cursor:pointer;font-family:var(--ff);font-size:.8rem}
+.card .card-del:hover{border-color:#ff8a7a}
+.card label{color:var(--muted);font-size:.78rem;display:block;margin-bottom:4px}
+.card input,.card textarea,.card select{width:100%;background:var(--bg);border:1px solid var(--line);
+  border-radius:8px;color:var(--text);font-family:var(--ff);font-size:.95rem;padding:.55em .7em;resize:vertical}
+.card input:focus,.card textarea:focus,.card select:focus{outline:none;border-color:var(--teal)}
+.card .thumb{max-width:180px}
+@media(max-width:640px){.card{grid-template-columns:1fr}}
+
 .grid{display:flex;flex-direction:column;gap:22px}
 fieldset{border:1px solid var(--line);border-radius:14px;padding:20px;display:grid;
   grid-template-columns:1fr 1fr;gap:14px}
